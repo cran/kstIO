@@ -1,0 +1,239 @@
+\documentclass[fleqn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[round,longnamesfirst]{natbib}
+\usepackage{graphicx,keyval,a4wide,thumbpdf,makeidx,color,colordvi}
+\usepackage{amsfonts,hyperref}
+
+\newcommand\R{\textsf{R}}
+\newcommand{\pkg}[1]{{\normalfont\fontseries{b}\selectfont #1}}
+\newcommand{\sQuote}[1]{`{#1}'}
+\newcommand{\dQuote}[1]{``{#1}''}
+\newcommand{\file}[1]{\sQuote{\textsf{#1}}}
+\newcommand{\data}[1]{\texttt{#1}}
+\newcommand{\var}[1]{\textit{#1}}
+\newcommand{\class}[1]{\textsf{#1}}
+\newcommand{\proglang}[1]{\textsf{#1}}
+%% \code without `-' ligatures
+\def\nohyphenation{\hyphenchar\font=-1 \aftergroup\restorehyphenation}
+\def\restorehyphenation{\hyphenchar\font=`-}
+{\catcode`\-=\active%
+  \global\def\code{\bgroup%
+    \catcode`\-=\active \let-\codedash%
+    \Rd@code}}
+\def\codedash{-\discretionary{}{}{}}
+\def\Rd@code#1{\texttt{\nohyphenation#1}\egroup}
+\newcommand{\codefun}[1]{\code{#1()}}
+\newcommand{\codefunind}[1]{\codefun{#1}\index{\texttt{#1}}}
+\newcommand{\codeind}[1]{\code{#1}\index{\texttt{#1}}}
+
+\SweaveOpts{strip.white=true}
+
+\AtBeginDocument{\setkeys{Gin}{width=0.5\textwidth}}
+
+\definecolor{Blue}{rgb}{0,0,0.8}
+\definecolor{Red}{rgb}{0.7,0,0}
+
+\date{2018-01-04}
+\title{Knowledge Space Theory Input and Output}
+\author{Cord Hockemeyer}
+%\VignetteIndexEntry{KSTIO}
+%\VignetteDepends{kstIO}
+%\VignetteKeywords{knowledge space, read/write}
+%\VignettePackage{kstIO}
+
+\makeindex{}
+
+\sloppy{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This document explains basic read and write operations for knowledge 
+structures and knowledge spaces available in \R{} through the \pkg{kstIO} 
+package.
+\end{abstract}
+
+<<echo=FALSE>>=
+options(width = 80)
+library("kstIO")
+library("kst")
+wd <- getwd()
+setwd(tempdir())
+@ %
+
+%\section{Introduction}
+%\label{sec:introduction}
+
+Knowledge Space Theory \citep{doignon:b99} is a set- and order-theoretical
+framework, which proposes mathematical formalisms to operationalize
+knowledge structures in a particular domain. There exist several \R{}
+packages for knowledge space theory, namely \pkg{kst}, \pkg{pks}, and
+\pkg{DAKS} which use different forms of representations for knowledge
+spaces and structures. The \pkg{kstIO} package provides functions for
+reading and writing those structures from/to files.
+
+\section{File Formats}\label{sec:fileformats}
+Over time and in different research groups with knowledge space theory,
+different file formats have evolved.
+
+  \subsection{Matrix Format}
+    The probably simplest and most direct approach
+    is to store the information in a binary ASCII matrix where a "1" 
+    in row i and column j means that item j is element of state/response 
+    pattern i. 
+    
+    There is no separating character between the columns, 
+    and there should be no trailing whitespace at the end of the line.
+    The last line of the matrix must carry an EndOfLine - in most editors
+    (except vi) this means an empty line after the matrix.
+  
+  \subsection{KST Tools Format}
+    This format \citep{hockemeyer:tr01a} extends the 
+    matrix format by two preceding header lines containing the number of 
+    items and the number of states/response patterns, respectively.
+  
+  \subsection{SRBT Tools Format}
+    This format \citep{poetzi:tr01b} extends 
+    the KST tools format by yet another preceding header line with format and 
+    content metadata. This new header line has the format
+\begin{verbatim}
+#SRBT v2.0 <struct> ASCII <comment>
+\end{verbatim}
+    where \verb|<struct>| specifies the type of data stored in the
+    file and \verb|<comment>| is an optional arbitrary comment.
+
+    The following data types are supported by the respective
+    \code{kstIO} functions:
+    \begin{itemize}
+      \item basis
+      \item data
+      \item space
+      \item structure
+    \end{itemize}
+  
+  \subsection{Base Files}
+    For base files, some special rules apply. They are available only
+    in KST and 
+    SRBT tools format. Their matrix part differs from the other files 
+    in that it contains "0", "1", and "2". A "1" means that the state
+    is minimal for the item and a "2" means that it is not (but contains 
+    the item). A "0" stands (as always) for the state not containing 
+    the item.
+
+    For \code{kbase} files, the encoding information \code{"ASCII"} is 
+    missing because \code{kbase} files are always in ASCII format.
+
+    \textbf{Note:} While the respective functions in \pkg{kst} and 
+    \pkg{kstIO} use the term \emph{base} in their names, the \verb|sstruct>|
+    term in the SRBT header line is \emph{basis}.
+  
+  \subsection{Example}
+  Below, you see an example of a small knowledge structure file in
+  SRBT format.
+\begin{verbatim}
+#SRBT v2.0 structure ASCII
+3
+5
+000
+100
+110
+101
+111
+\end{verbatim}
+
+  \subsection{Binary File Formats}
+  The KST and SRBT Tools User Manuals \citep{hockemeyer:tr01a,poetzi:tr01b}
+  define also binary file formats. These formats are not (yet) supported
+  by the \pkg{kstIO} package.
+
+\section{Output functions}
+There are four output functions in the \pkg{kstIO} package.
+\begin{itemize}
+\item \codefunind{write\_kbase}
+\item \codefunind{write\_kdata}
+\item \codefunind{write\_kspace}
+\item \codefunind{write\_kstructure}
+\end{itemize}
+These functions have the same calling scheme
+\begin{verbatim}
+write_kXXX(x, filename, format="SRBT")
+\end{verbatim}
+where \code{x} denotes the data structure to be written, \code{filename}
+the name of the file to be created, and \code{format}
+the file format (\code{"SRBT"}, \code{"KST"}, or \code{"matrix"} as
+described in Section~\ref{sec:fileformats} above.
+The knowledge structure
+or knowledge space can be in set-based format (classes \code{kspace} or 
+\code{kstructure}) or in matrix format. Please note that for bases,
+only the \code{SRBT} and \code{KST} formats are valid.
+<<write-functions>>=
+# Obtain data from the pks package
+data(DoignonFalmagne7)
+ksp <- kspace(kstructure(as.pattern(DoignonFalmagne7$K, as.set=TRUE)))
+b <- kbase(ksp)
+d <- as.binmat(DoignonFalmagne7$N.R)
+ksp
+b
+d
+# Write data to files
+write_kstructure(ksp, "DF7.struct")
+write_kspace(ksp, "DF7.space", format="matrix")
+write_kbase(b, "DF7.bas", format="KST")
+write_kdata(d, "DF7.data", format="SRBT")
+@
+The resulting base file, for example, looks like the following:
+<<show_example-file>>=
+txt <- readLines("DF7.bas")
+for (i in txt)
+  cat(paste(i, "\n", sep=""))
+@
+
+\section{Input Functions}
+There are four input functions in the \pkg{kstIO} package.
+\begin{itemize}
+\item \codefunind{read\_kbase}
+\item \codefunind{read\_kdata}
+\item \codefunind{read\_kspace}
+\item \codefunind{read\_kstructure}
+\end{itemize}
+These functions have the same calling scheme
+\begin{verbatim}
+d <- read_kXXX(filename, format="SRBT")
+\end{verbatim}
+where \code{filename} denotes the file to be read and \code{format} 
+the file format (\code{"SRBT"}, \code{"KST"}, or \code{"matrix"} as
+described in Section~\ref{sec:fileformats} above, or \code{"auto"}
+(default) for automatic format detection. Please note that automatic
+format detection works slightly heuristically and therefore might
+err between \code{"KST"} and \code{"matrix"} formats under rare
+circumstances.
+
+The return values depend on the type of file to be read: for 
+\codefun{read\_kspace} and \codefun{read\_kstructure} it is a list 
+containing of two element, \code{matrix} and \code{sets} containing 
+the read knowledge structure/space as a binary matrix and in set-based 
+form (i.e. as object of class \code{kspace} or \code{kstructure}), 
+respectively. For \codefun{read\_kbase}, an object of class \code{kbase}
+is returned and for \codefun{read\_kdata} a binary matrix.
+
+<<read-functions>>=
+# Read the data files stored before
+read_kstructure("DF7.struct", format="SRBT")
+read_kspace("DF7.space", format="matrix")
+read_kbase("DF7.bas", format="auto")
+read_kdata("DF7.data")
+@
+<<echo=FALSE>>=
+setwd(wd)
+@
+
+{\small
+  \bibliographystyle{abbrvnat}
+  \bibliography{kst}
+}
+
+\printindex{}
+
+\end{document}
+
