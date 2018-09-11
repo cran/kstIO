@@ -68,6 +68,7 @@ read_kspace <- function (filename, format="auto") {
   }   # end of automatic format detection
 
   mat <- mat.or.vec(nos, noi)
+  storage.mode(mat) <- "integer"
   for (i in 1:nos) {
     mat[i,]<- 1*as.logical(as.numeric(unlist(strsplit(trimws(f[i+offset],which="both"),""))))
   }

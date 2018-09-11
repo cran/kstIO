@@ -60,7 +60,7 @@ library("kstIO")
 library("kst")
 wd <- getwd()
 setwd(tempdir())
-@ %
+@ 
 
 %\section{Introduction}
 %\label{sec:introduction}
@@ -210,12 +210,13 @@ err between \code{"KST"} and \code{"matrix"} formats under rare
 circumstances.
 
 The return values depend on the type of file to be read: for 
-\codefun{read\_kspace} and \codefun{read\_kstructure} it is a list 
-containing of two element, \code{matrix} and \code{sets} containing 
-the read knowledge structure/space as a binary matrix and in set-based 
-form (i.e. as object of class \code{kspace} or \code{kstructure}), 
-respectively. For \codefun{read\_kbase}, an object of class \code{kbase}
-is returned and for \codefun{read\_kdata} a binary matrix.
+\codefun{read\_kspace}, \codefun{read\_kstructure}, and
+\codefun{read\_kbase}, it is a list 
+containing two elements, \code{matrix} and \code{sets} which contain 
+the read knowledge structure/space/base as a binary matrix and in set-based 
+form (i.e. as object of class \code{kspace}, \code{kstructure}, or
+\code{kbase}), respectively. For \codefun{read\_kdata}, a binary matrix 
+is returned.
 
 <<read-functions>>=
 # Read the data files stored before

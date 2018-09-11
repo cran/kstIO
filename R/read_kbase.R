@@ -68,12 +68,13 @@ read_kbase <- function (filename, format="auto") {
   }   # end of automatic format detection
 
   mat <- mat.or.vec(nos, noi)
+  storage.mode(mat) <- "integer"
   for (i in 1:nos) {
     mat[i,]<- 1*as.logical(as.numeric(unlist(strsplit(trimws(f[i+offset],which="both"),""))))
   }
   s <- as.pattern(mat, as.set=TRUE)
   class(s) <- c("kbase", class(s))
   
-  s
+  list(matrix = mat, sets = s)
   
 }

@@ -48,7 +48,7 @@ read_kdata("DF7.data")
 
 
 ###################################################
-### code chunk number 5: kstIO.Rnw:227-228
+### code chunk number 5: kstIO.Rnw:228-229
 ###################################################
 setwd(wd)
 

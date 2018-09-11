@@ -1,1 +1,6 @@
-2018-01-04: Created kstIO package
+2018-04-13: Version 0.2-0, Cord Hockemeyer <cord.hockemeyer@uni-graz.at>
+* Seting all matrices to integer storage mode
+* changing read_kbase() to also return a list of matrix + sets
+
+2018-01-04: Version 0.1-0, Cord Hockemeyer <cord.hockemeyer@uni-graz.at>
+* Created kstIO package
