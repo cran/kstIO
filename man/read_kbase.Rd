@@ -10,15 +10,16 @@
 }
 
 \usage{
-  read_kbase(filename, format = "auto")
+  read_kbase(filename, format = "auto", as.letters = TRUE)
 }
 
 \arguments{
   \item{filename}{A character string specifying the name of the base file.}
 
   \item{format}{Specification of the files format. Can be "SRBT", "KST",
-    "matrix", or "auto" (default).
-  }
+    "matrix", or "auto" (default).}
+  \item{as.letters}{logical, should the elements of the sets be letters
+                    or numbers?}
 }
 
 \details{
@@ -27,6 +28,9 @@
   described in \link{kstIO-package}.  The value \code{"auto"} (default)
   requests an automatic detection of the format by thje \code{read_XXX}
   function. 
+
+  If \code{as.letters} is \code{TRUE} the elements of the sets are letters,
+  otherwise numbers.
 }
 
 \value{A list with the following elements:
@@ -39,7 +43,7 @@
   Hockemeyer, C. (2001). \emph{KST Tools User Manual} (2nd ed.). 
   \url{https://kst.hockemeyer.at/techreports/KST-Tools_TechRep_FWF01.pdf}.
 
-  Pötzi, S. \& Wesiak, G. (2001). SRbT Tools User Manual.
+  Poetzi, S. \& Wesiak, G. (2001). SRbT Tools User Manual.
   \url{https://kst.hockemeyer.at/techreports/SRBT-Tools_TechRep_FWF01.pdf}
 }
 

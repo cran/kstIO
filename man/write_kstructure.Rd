@@ -33,7 +33,7 @@
   Hockemeyer, C. (2001). \emph{KST Tools User Manual} (2nd ed.). 
   \url{https://kst.hockemeyer.at/techreports/KST-Tools_TechRep_FWF01.pdf}.
 
-  Pötzi, S. \& Wesiak, G. (2001). \emph{SRbT Tools User Manual.}
+  Poetzi, S. \& Wesiak, G. (2001). \emph{SRbT Tools User Manual.}
   \url{https://kst.hockemeyer.at/techreports/SRBT-Tools_TechRep_FWF01.pdf}
 }
 

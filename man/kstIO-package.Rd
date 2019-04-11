@@ -36,23 +36,28 @@
     matrix format by two preceding header lines containing the number of 
     items and the number of states/response patterns, respectively.
   }
-  \subsection{SRBT Tools Format}{This format (Pötzi \& Wesiak, 2001) extends 
+  \subsection{SRBT Tools Format}{This format (Poetzi \& Wesiak, 2001) extends 
     the KST tools format by yet another preceding header line with format and 
     content metadata. This new header line has the format
     \preformatted{#SRBT v2.0 <struct> ASCII <comment>}
     where \verb{<struct>} specifies the type of data stored in the
     file and \verb{<comment>} is an optional arbitrary comment.
 
+    Furthermore, SRBT files may contain an arbitrary number of comment lines 
+    after the number of states/patterns.
+
     The following data types are supported by the respective
     \code{kstIO} functions:
     \itemize{
       \item basis
       \item data
+      \item relation
       \item space
       \item structure
     }
-    For \code{kbase} files, the encoding information \code{"ASCII"} is 
-    missing because \code{kbase} files are always in ASCII format.
+    For \code{kbase} and surmise \code{relation} files, the encoding
+    information \code{"ASCII"} is missing because these files are always
+    in ASCII format.
   }
   \subsection{Base Files}{Base files are available only in KST and 
     SRBT tools format. Their matrix part differs from the other files 
@@ -61,9 +66,20 @@
     the item). A "0" stands (as always) for the state not containing 
     the item.
   }
+  \subsection{Surmise Relation Files}{Surmise relation files are available 
+	  only in matrix and SRBT tools format as they were never used
+	  in KST tools format.
+
+	  Please note that their matrices are somewhat transposed in
+	  comparison to all the other formats. Row i and column j is
+	  equal to "1" if knowing i can be surmised from knowing j, and 
+	  equal to "0" otherwise. Thus, column j describes the minimal
+	  state for item j.
+  }
   \subsection{Example}{\preformatted{#SRBT v2.0 structure ASCII
 3
 5
+# Some comment or item information
 000
 100
 110
@@ -84,13 +100,13 @@
   Hockemeyer, C. (2001). KST Tools User Manual (2nd ed.).
   \url{https://kst.hockemeyer.at/techreports/KST-Tools_TechRep_FWF01.pdf}.
 
-  Pötzi, S. & Wesiak, G. (2001). SRbT Tools User Manual. 
+  Poetzi, S. & Wesiak, G. (2001). SRbT Tools User Manual. 
   \url{https://kst.hockemeyer.at/techreports/SRBT-Tools_TechRep_FWF01.pdf}.
 }
 
 \seealso{
   \code{\link[kst]{kbase}}
-  \code{\link[kst]{kspace}}
+  \code{\link[kst]{space_property}}
   \code{\link[kst]{kstructure}}
 }
 

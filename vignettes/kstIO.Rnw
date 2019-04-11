@@ -33,7 +33,7 @@
 \definecolor{Blue}{rgb}{0,0,0.8}
 \definecolor{Red}{rgb}{0.7,0,0}
 
-\date{2018-01-04}
+% \date{2018-04-07}
 \title{Knowledge Space Theory Input and Output}
 \author{Cord Hockemeyer}
 %\VignetteIndexEntry{KSTIO}
@@ -49,10 +49,12 @@
 \maketitle
 
 \begin{abstract}
-This document explains basic read and write operations for knowledge 
+\noindent This document explains basic read and write operations for knowledge 
 structures and knowledge spaces available in \R{} through the \pkg{kstIO} 
 package.
 \end{abstract}
+
+\tableofcontents
 
 <<echo=FALSE>>=
 options(width = 80)
@@ -62,13 +64,12 @@ wd <- getwd()
 setwd(tempdir())
 @ 
 
-%\section{Introduction}
-%\label{sec:introduction}
-
+\section{Introduction}
+\label{sec:introduction}
 Knowledge Space Theory \citep{doignon:b99} is a set- and order-theoretical
 framework, which proposes mathematical formalisms to operationalize
 knowledge structures in a particular domain. There exist several \R{}
-packages for knowledge space theory, namely \pkg{kst}, \pkg{pks}, and
+packages for knowledge space theory, namely \pkg{kst}, \pkg{kstMatrix}, \pkg{pks}, and
 \pkg{DAKS} which use different forms of representations for knowledge
 spaces and structures. The \pkg{kstIO} package provides functions for
 reading and writing those structures from/to files.
@@ -110,6 +111,7 @@ different file formats have evolved.
       \item data
       \item space
       \item structure
+      \item relation
     \end{itemize}
   
   \subsection{Base Files}
@@ -128,6 +130,13 @@ different file formats have evolved.
     \pkg{kstIO} use the term \emph{base} in their names, the \verb|sstruct>|
     term in the SRBT header line is \emph{basis}.
   
+  \subsection{(Surmise) Relation Files}
+    Also for relation files, some special rules apply. As relation file
+    formats were never defined in KST tools format, these files are
+    available in SRBT tools and matrix format only. Like for \code{base} files,
+    the encoding information \code{"ASCII"} is missing because \code{relation}
+    files are always in ASCII format.
+
   \subsection{Example}
   Below, you see an example of a small knowledge structure file in
   SRBT format.
@@ -144,20 +153,21 @@ different file formats have evolved.
 
   \subsection{Binary File Formats}
   The KST and SRBT Tools User Manuals \citep{hockemeyer:tr01a,poetzi:tr01b}
-  define also binary file formats. These formats are not (yet) supported
+  define also binary file formats. These formats are not supported
   by the \pkg{kstIO} package.
 
 \section{Output functions}
-There are four output functions in the \pkg{kstIO} package.
+There are five output functions in the \pkg{kstIO} package.
 \begin{itemize}
 \item \codefunind{write\_kbase}
 \item \codefunind{write\_kdata}
 \item \codefunind{write\_kspace}
 \item \codefunind{write\_kstructure}
+\item \codefunind{write\_surmiserelation}
 \end{itemize}
 These functions have the same calling scheme
 \begin{verbatim}
-write_kXXX(x, filename, format="SRBT")
+write_XXX(x, filename, format="SRBT")
 \end{verbatim}
 where \code{x} denotes the data structure to be written, \code{filename}
 the name of the file to be created, and \code{format}
@@ -172,15 +182,17 @@ only the \code{SRBT} and \code{KST} formats are valid.
 data(DoignonFalmagne7)
 ksp <- kspace(kstructure(as.pattern(DoignonFalmagne7$K, as.set=TRUE)))
 b <- kbase(ksp)
-d <- as.binmat(DoignonFalmagne7$N.R)
+d <- as.binmat(DoignonFalmagne7$N.R, uniq=FALSE)
+r <- as.relation(ksp)
 ksp
 b
-d
+head(d)
 # Write data to files
 write_kstructure(ksp, "DF7.struct")
 write_kspace(ksp, "DF7.space", format="matrix")
 write_kbase(b, "DF7.bas", format="KST")
 write_kdata(d, "DF7.data", format="SRBT")
+write_surmiserelation(r, "DF7.rel")
 @
 The resulting base file, for example, looks like the following:
 <<show_example-file>>=
@@ -190,14 +202,17 @@ for (i in txt)
 @
 
 \section{Input Functions}
-There are four input functions in the \pkg{kstIO} package.
+There are six input functions in the \pkg{kstIO} package.
 \begin{itemize}
 \item \codefunind{read\_kbase}
 \item \codefunind{read\_kdata}
+\item \codefunind{read\_kfamset}
 \item \codefunind{read\_kspace}
 \item \codefunind{read\_kstructure}
+\item \codefunind{read\_surmiserelation}
 \end{itemize}
-These functions have the same calling scheme
+These functions have a similar calling scheme. For bases, data, famsets, and knowledge structures
+it is
 \begin{verbatim}
 d <- read_kXXX(filename, format="SRBT")
 \end{verbatim}
@@ -209,21 +224,34 @@ format detection works slightly heuristically and therefore might
 err between \code{"KST"} and \code{"matrix"} formats under rare
 circumstances.
 
+For surmise relations and knowledge spaces, there is an additional (optional) parameter:
+\begin{verbatim}
+d <- read_YYYY(filename, format="SRBT", close=FALSE)
+\end{verbatim}
+
 The return values depend on the type of file to be read: for 
-\codefun{read\_kspace}, \codefun{read\_kstructure}, and
+\codefun{read\_kfamset}, \codefun{read\_kspace}, \codefun{read\_kstructure}, and
 \codefun{read\_kbase}, it is a list 
 containing two elements, \code{matrix} and \code{sets} which contain 
 the read knowledge structure/space/base as a binary matrix and in set-based 
 form (i.e. as object of class \code{kspace}, \code{kstructure}, or
 \code{kbase}), respectively. For \codefun{read\_kdata}, a binary matrix 
-is returned.
+is returned. For \codefun{read\_surmiserelation}, a list with two elements, 
+\code{relation} and \code{matrix} is returned which contain the surmise relation
+and its incedence matrix, repectively.
+
+If \code{close} is \code{TRUE}, the respective structure is closed, i.\,e.\ in
+case of a knowledge space, it is closed under union, and in case of a surmise
+relation, it is closed under reflexivity and transitivity.
 
 <<read-functions>>=
 # Read the data files stored before
+read_kfamset("DF7.space")
 read_kstructure("DF7.struct", format="SRBT")
 read_kspace("DF7.space", format="matrix")
 read_kbase("DF7.bas", format="auto")
-read_kdata("DF7.data")
+head(read_kdata("DF7.data"))
+read_surmiserelation("DF7.rel")
 @
 <<echo=FALSE>>=
 setwd(wd)

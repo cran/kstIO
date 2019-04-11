@@ -1,4 +1,17 @@
-2018-04-13: Version 0.2-0, Cord Hockemeyer <cord.hockemeyer@uni-graz.at>
+2019-04-07: Version 0.3-0, Cord Hockemeyer <cord.hockemeyer@uni-graz.at>
+* New functions for reading and writing surmise relations
+* New function read_kfamset()
+* New (logical) parameter as.letters in all read_* functions
+* New (logical) parameter close in read_surmiserlation and read_kspace
+* Allow for item comments in SRBT files as foreseen in the original file
+  format definition
+
+
+2018-09-12: Version 0.2-1, Cord Hockemeyer <cord.hockemeyer@uni-graz.at>
+* Correct integer mode for read matrices
+* Set kfamset class for read sets
+
+2018-09-11: Version 0.2-0, Cord Hockemeyer <cord.hockemeyer@uni-graz.at>
 * Seting all matrices to integer storage mode
 * changing read_kbase() to also return a list of matrix + sets
 

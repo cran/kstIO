@@ -1,10 +1,11 @@
 ###
 ### read_kspace.R
 ###
-### dependencies: pks, stringr
+### dependencies: pks, stringr, kstMatrix
 ###
 
-read_kspace <- function (filename, format="auto") {
+read_kspace <- function (filename, format="auto", 
+			 as.letters =TRUE, close = FALSE) {
 
   f <- readLines(con=filename)
   if (length(f) == 0) {
@@ -22,6 +23,11 @@ read_kspace <- function (filename, format="auto") {
     if (nos <= 0)
       stop(sprintf("Invalid number of states in %s.", filename))
     offset <- 3
+    p <- str_locate(f[4], "#")
+    while (!is.na(p[1][1])) {
+      offset <- offset + 1
+      p <- str_locate(f[offset+1], "#")
+    }
   }
   else if (format == "KST") {
     noi <- as.numeric(f[1])
@@ -50,6 +56,11 @@ read_kspace <- function (filename, format="auto") {
       if (nos <= 0)
         stop(sprintf("Invalid number of states in %s.", filename))
       offset <- 3
+      p <- str_locate(f[4], "#")
+      while (!is.na(p[1][1])) {
+        offset <- offset + 1
+        p <- str_locate(f[offset+1], "#")
+      }
     }
     else if (str_length(f[1]) == str_length(f[length(f)])) { # most probably matrix
       nos <- length(f)
@@ -68,12 +79,21 @@ read_kspace <- function (filename, format="auto") {
   }   # end of automatic format detection
 
   mat <- mat.or.vec(nos, noi)
-  storage.mode(mat) <- "integer"
   for (i in 1:nos) {
-    mat[i,]<- 1*as.logical(as.numeric(unlist(strsplit(trimws(f[i+offset],which="both"),""))))
+    mat[i,]<- 1L*as.logical(as.integer(unlist(strsplit(trimws(f[i+offset],which="both"),""))))
   }
+  storage.mode(mat) <- "integer"
+  if (as.letters) {
+    names <- make.unique(letters[(0L:(ncol(mat)-1)) %% 26 + 1])
+  } else {
+    names <- as.integer(1L:ncol(mat))
+  }
+  colnames(mat) <- names
+
+  if (close) { mat <- kstMatrix::kmunionclosure(mat) }
+  
   s <- as.pattern(mat, as.set=TRUE)
-  class(s) <- c("kspace", "kstructure", class(s))
+  class(s) <- unique(c("kspace", "kstructure", "kfamset", class(s)))
   
   list(matrix=mat, sets=s)
   

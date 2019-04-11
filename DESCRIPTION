@@ -1,6 +1,6 @@
 Package: kstIO
-Version: 0.2-0
-Date: 2018-09-11
+Version: 0.3-0
+Date: 2019-04-11
 Title: Knowledge Space Theory Input/Output
 Authors@R: c(person(given = "Cord", family = "Hockemeyer", 
                     role = c("aut", "cre"),
@@ -13,12 +13,13 @@ Description: Knowledge space theory by Doignon and Falmagne (1999)
    files to be used together with the 'kst', 'kstMatrix', 'pks' or 
    'DAKS' packages.
 License: GPL (>= 3)
-Depends: R (>= 3.3.0), pks (>= 0.4-0), MASS, stringr, sets
-Suggests: kst (>= 0.3-0)
+Depends: R (>= 3.5.0), pks (>= 0.4-0), MASS, stringr, sets, relations
+Imports: kstMatrix
+Suggests: kst (>= 0.5-1)
 Author: Cord Hockemeyer [aut, cre]
 Maintainer: Cord Hockemeyer <cord.hockemeyer@uni-graz.at>
 NeedsCompilation: no
 Repository: CRAN
 Encoding: UTF-8
-Packaged: 2018-09-11 05:44:53 UTC; cord
-Date/Publication: 2018-09-11 06:20:02 UTC
+Packaged: 2019-04-11 14:32:39 UTC; cord
+Date/Publication: 2019-04-11 14:52:56 UTC

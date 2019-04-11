@@ -1,10 +1,10 @@
 ###
-### read_kbase.R
+### read_famset
 ###
 ### dependencies: pks, stringr
 ###
 
-read_kbase <- function (filename, format="auto", as.letters = TRUE) {
+read_kfamset <- function (filename, format="auto", as.letters = TRUE) {
 
   f <- readLines(con=filename)
   if (length(f) == 0) {
@@ -12,7 +12,7 @@ read_kbase <- function (filename, format="auto", as.letters = TRUE) {
   }
   
   if (format == "SRBT") {
-    p <- str_locate(f[1], "#SRBT v2.0 basis")
+    p <- str_locate(f[1], "#SRBT v2.0")
     if (is.na(p[1][1]) | p[1][1] != 1)
       stop(sprintf("File %s has no correct SRBT header.", filename))
     noi <- as.numeric(f[2])
@@ -45,7 +45,7 @@ read_kbase <- function (filename, format="auto", as.letters = TRUE) {
   else {   # format == "auto"
     p <- str_locate(f[1], "#SRBT")
     if (!is.na(p[1][1]) & p[1][1] == 1) {
-      p <- str_locate(f[1], "#SRBT v2.0 basis")
+      p <- str_locate(f[1], "#SRBT v2.0")
       if (p[1][1] != 1)
         stop(sprintf("File %s has no correct SRBT header.", filename))
       noi <- as.numeric(f[2])
@@ -88,8 +88,10 @@ read_kbase <- function (filename, format="auto", as.letters = TRUE) {
     names <- as.integer(1L:ncol(mat))
   }
   colnames(mat) <- names
-  s <- as.pattern(mat, as.set=TRUE)
-  class(s) <- unique( c("kbase", "kfamset", class(s)) )
   
-  list(matrix = mat, sets = s)
+  s <- as.pattern(mat, as.set=TRUE)
+  class(s) <- unique(c("kfamset", class(s)))
+  
+  list(matrix=mat, sets=s)
+  
 }

@@ -1,15 +1,20 @@
 importFrom("pks", "as.pattern", "as.binmat")
 importFrom("MASS", "write.matrix")
 importFrom("stringr", "str_length", "str_locate")
+importFrom("kstMatrix", "kmunionclosure")
+import("relations")
 import("sets")
 
 export("read_kbase",
        "read_kdata",
+       "read_kfamset",
        "read_kspace",
        "read_kstructure",
+       "read_surmiserelation",
        "write_kbase",
        "write_kdata",
        "write_kspace",
-       "write_kstructure"
+       "write_kstructure",
+       "write_surmiserelation"
 )
 

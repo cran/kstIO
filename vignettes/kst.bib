@@ -4,7 +4,7 @@ BiBTeX data base for knowledge space theory texts
 Originally converted  from Jean-Paul Doignon's AMS/La/PlainTeX list by
 Cord Hockemeyer, August 24, 1994
 
-Last changed Jan 9, 2014 by Cord Hockemeyer
+Last changed July 6, 2018 by Cord Hockemeyer
  (Cord.Hockemeyer at uni-graz.at)
 
 In general, I use first_author:year as citation labels for articles,
@@ -12,7 +12,8 @@ first_author:first_editor for incollections, first_author:conference
 for conference papers and author:thesistype for all kinds of theses.
 If necessary, a letter (in alphabetical order) is added for
 uniqueness of articles. Books and techreports/mnuals are marked with a `b'
-or a `tr', respectively, between colon and year.
+or a `tr', respectively, between colon and year. For R packages, the
+label is first_author:package_abbreviation_in_lowercase.
 }
 
 
@@ -64,6 +65,15 @@ booktitle = {Gesellschaftliche und indiviuelle {E}ntwicklung in
 publisher = {Universit{\"a}ts--Verlag Konstanz},
 pages = {299--315},
 }
+
+@article{albert:03,
+	author = {Albert, Dietrich},
+	year = 2003,
+	title = {Contributions of the psychology of knowledge to learning science and education},
+	journal = {Journal of Learning and Curriculum Development},
+	volume = 2,
+	pages = {111--116},
+} 
 
 @inproceedings{albert:CAP90,
 author = {Dietrich Albert and H. P. Bahrick and Jean-Claude Falmagne and C.
@@ -352,6 +362,18 @@ pages = 39,
 address = {Zagreb, Croatia},
 }
 
+@incollection{albert:sottilare,
+	author = {Albert, D. and Nussbaumer, A. and Kuo, B. and Foltz, P.W. and Hu, X.},
+	year = 2017,
+	title = {Competence-based knowledge structures and current challenges for E-assessment},
+	editor = {R. Sottilare and A. Graesser and X. Hu and G. Goodwin},
+	booktitle = {Design recommendations for intelligent tutoring systems: Volume 5 - assessment methods},
+	pages = {21--28},
+	address = {Orlando, FL, USA},
+	publisher = {U.S. Army Research Laboratory (ARL)},
+	url = {https://gifttutoring.org/documents/120},
+}
+
 @inproceedings{albert:icce08,
 author = {Dietrich Albert and Alexander Nussbaumer and Christina
 Steiner},
@@ -362,6 +384,22 @@ Conference on Computers in Education},
 pages = {3--10},
 year = {2008},
 organization = {Asia--Pacific Society for Computers in Education},
+}
+
+@inproceedings{albert:icce10,
+	author =  {Dietrich Albert and Alexander Nussbaumer and Christina Steiner},
+	year = 1020,
+	title = {Towards generic visualisation tools and techniques for adaptive E-learning},
+	booktitle = {Proceedings of the 18th International Conference on Computers in Education},
+	pages = {61--65},
+}
+
+@inproceedings{albert:icce09,
+	author = {Albert, D. and Nussbaumer, A. and Steiner, C.M. and Hendrix, M. and Cristea, A.},
+	year = 2009,
+	title = {Design and development of an authoring tool for pedagogical relationship types between concepts},
+	booktitle = {Proceedings of the 17th International Conference on Computer in Education (ICCE 2009}, 
+	pages = {194--196},
 }
 
 @inproceedings{albert:icpc05,
@@ -473,6 +511,14 @@ publisher = {Springer},
 address = {Heidelberg},
 }
 
+@inproceedings{albert:icerp09,
+	author = {Albert, D. and Wong, S.L. and Wesiak, G.},
+	year = 2009,
+	title = {Structure for assessing teachers IT states},
+	booktitle = {Proceedings of the 1st International Conference on Educational Research and Practice (ICERP): Enhancing Human Capital through Teacher Education},
+	pages = {1017--1032},
+}
+
 @article{anselmi:12,
 author = {Pasquale Anselmi and Egidio Pobusto and Luca
 Stefanutti},
@@ -553,7 +599,7 @@ school = {Karl--Franzens--Universit{\"a}t Graz, Austria},
 @article{augustin:11,
 author = {Thomas Augustin and Cord Hockemeyer and Michael
 Kickmeier-Rust and Dietrich Albert},
-title = {Individualized Skill Assessment in Educational Games:
+title = {Individualized Skill Assessment in Digital learning Games:
 Basic Definitions and Mathematical Formalism},
 year = 2011,
 journal = {{I}{E{E}}{E} Transactions on Learning Technologies},
@@ -807,14 +853,20 @@ address = {Heidelberg},
 }
 
 @article{carvalho:15,
-	author = {Maira B. Carvalho mand Francesco Bellotti and Riccardo Berta and Alessandro De Gloria and Giorgia Gazzarata and Jun Hu and Michael Kickmeier-Rust},
-	title = { A case study on Service-Oriented Architecture for Serious Games},
-	journal = {Entertainment Computing},
-	volume = 6,
-	year = 2015,
-	month = {January},
-	pages = {1--10},
+	author={Maira B. Carvalho and Francesco Bellotti and Riccardo Berta and Alessandro De Gloria and Giorgia Gazzarata and Jun Hu and Michael Kickmeier-Rust},
+	year={2015},
+	month={1},
+	title={A case study on Service-Oriented Architecture for Serious Games},
+	journal={Entertainment Computing},
+	volume={6},
+	pages={1-10},
+	abstract={Abstract Service-Oriented Architecture (SOA) is a set of practices for architectural design of software that exploits services as loosely coupled components orchestrated to deliver various functionalities. The SOA paradigm is not well established in the Serious Games (SG) domain, but it is expected to provide benefits, particularly in reducing the conceptual and technological complexity of the development. In this paper, we propose and study the application of a SOA approach to SG development. We have used the SOA approach to develop an adaptive Serious Game for teaching basic elements of probability to high school and entry-level university students, called The Journey. Details of the architecture implementation are offered, as well as the results of an evaluation of the system using the Architecture Tradeoff Analysis Method (ATAM). Based on our experience, we argue that the SOA approach can make SG development shorter, more flexible and more focused.},
+	keywords={Adaptive Serious Games; Games for learning; Serious Games; Serious Games development; Service Oriented Architecture; Architecture Tradeoff Analysis Method},
+	isbn={1875-9521},
+	url={http://dx.doi.org/10.1016/j.entcom.2014.11.001},
+	doi={10.1016/j.entcom.2014.11.001}
 }
+
 
 @InProceedings{cathcart:icls10,
   title =	"Using knowledge space theory to analyze concept maps",
@@ -1056,6 +1108,16 @@ doi = {10.1017/sjp.2015.24},
 url = {http://dx.doi.org/10.1017/sjp.2015.24},
 }
 
+@article{dechiusole:16,
+	author = {de Chiusole, Debora and Stefanutti, Luca and Anselmi, Pasquale and Robusto, Egidio},
+	title = {Testing the actual equivalence of automatically generated items},
+	journal = {Behavior Research Methods},
+	volume = 50,
+	number = 1,
+	year = 2016,
+	pages = {39--56},
+}
+
 @Article{dechiusole:17,
 author="de Chiusole, Debora and Stefanutti, Luca and Spoto, Andrea",
 title="A class of k-modes algorithms for extracting knowledge structures from data",
@@ -1070,7 +1132,15 @@ doi="10.3758/s13428-016-0780-7",
 url="http://dx.doi.org/10.3758/s13428-016-0780-7"
 }
 
-
+@article{dechiusole:18,
+	author = {de Chiusole, Debora and Stefanutti, Luca and Anselmi, pasquale and Robusto, Egidio},
+	title = {Testing the actual equivalence of automatically generated items},
+	journal = {Behavior Research methods},
+	volume = 50,
+	number = 1,
+	year = 2018,
+	pages = {39--56},
+}
 
 @article{degreef:86,
 author	={Degreef, Eric and Doignon, Jean-Paul and  Ducamp, Andr{\'e} and
@@ -1164,6 +1234,17 @@ booktitle = {User Modeling 2005: 10th International Conference},
 editor = {Liliana Ardissono and Paul Brna and Antonija Mitrovic},
 address = {Berlin},
 publisher = {Springer Verlag},
+}
+
+@article{dimache:15,
+	author = {Dimache, A. and Roche, T. and Kopeinik, S. and Winter, L.C. and Nussbaumer, A. and Albert, D},
+	year = {2015},
+	title = {Suitability of adaptive self-regulated e-learning to vocational training: A pilot study in heat pump system installation},
+	journal = {International Journal of Online Pedagogy and Course Design ({IJOPCD})},
+	volume = 5,
+	number = 3,
+	pages = {31--46},
+	doi = {10.4018/ijopcd.2015070103},
 }
 
 @mastersthesis{doesinger:diplom,
@@ -1382,6 +1463,16 @@ booktitle = {Knowledge Spaces: Applications in Education},
 year = 2013,
 publisher = {Springer},
 address = {Heidelberg},
+}
+
+@article{donadello:17,
+	author = {Donadello, Ivan and Spoto, Andrea and Sambo, Francesco and Badaloni, Silvana and Granziol, Umberto and Vidotto, Giulio},
+	title = {{ATS--PD}: An adaptive testing system for psychological disorders},
+	journal = {Educational and Psychological Measurement},
+	volume = 77,
+	number = 5,
+	year = 2017,
+	pages = {792--815},
 }
 
 @incollection{dowling:doignon,
@@ -2605,7 +2696,7 @@ Doignon and Falmagne.
 	Technische Universit\"at Braunschweig, Germany},
 	year = 1996,
 	type = {Unpublished Technical Report},
-	url = {https://kst.hockemeyer.at/techreports/KST-Tools_TechRep_BS-96.pdf},
+	note = {\url{https://kst.hockemeyer.at/techreports/KST-Tools_TechRep_BS-96.pdf}},
 }
 
 
@@ -2618,10 +2709,10 @@ institution = {Institut f{\"u}r Psychologie,
 Karl--Franzens--Universit{\"a}t Graz, Austria},
 number = {1997/3},
 year = 1997,
-url = {https://kst.hockemeyer.at/techreports/RATH-TechReport.pdf},
+note = {\url{https://kst.hockemeyer.at/techreports/RATH-TechReport.pdf}},
 }
 
-@techreport{hockemey:tr00a,
+@techreport{hockemeyer:tr00a,
 author = {Cord Hockemeyer},
 title = {{C}{R}{A}{T}{H}: A Collaborative Adaptive Tutoring
 Hypertext System},
@@ -2629,7 +2720,7 @@ institution = {Institut f{\"u}r Psychologie,
 Karl--Franzens--Universit{\"a}t Graz, Austria},
 year = 2000,
 type = {Unpublished Technical Report},
-url = {https://kst.hockemeyer.at/techreports/crath-Bericht.pdf},
+note = {\url{https://kst.hockemeyer.at/techreports/crath-Bericht.pdf}},
 }
 
 @manual{hockemeyer:tr00b,
@@ -2639,7 +2730,7 @@ institution = {Institut f{\"u}r Psychologie,
 Karl--Franzens--Universit{\"a}t Graz, Austria},
 year = 2000,
 type = {Unpublished Technical Report},
-url = {https://kst.hockemeyer.at/techreports/libsrbi_TechRep_FWF00.pdf},
+note = {\url{https://kst.hockemeyer.at/techreports/libsrbi_TechRep_FWF00.pdf}},
 }
 
 @manual{hockemeyer:tr01a,
@@ -2650,7 +2741,7 @@ Karl-Franzens-Universit{\"a}t Graz, Austria},
 year = 2001,
 edition = {2nd},
 type = {Unpublished Technical Report},
-url = {https://kst.hockemeyer.at/techreports/KST-Tools_TechRep_FWF01.pdf},
+note = {\url{https://kst.hockemeyer.at/techreports/KST-Tools_TechRep_FWF01.pdf}},
 }
 
 
@@ -2686,6 +2777,23 @@ month = {September},
 publisher = {{J}apanisch--{D}eutsches {Z}entrum {B}erlin (JDZB)},
 booktitle = {The Challenge of Demographic Change---Sustainable
 Life--Long Learning and Digital Media},
+}
+
+@Manual{hockemeyer:kstio,
+	title = {kst{IO}: Knowledge Space Theory Input/Output},
+	author = {Cord Hockemeyer},
+	year = {2018},
+	note = {R package version 0.2-0},
+	url = {https://CRAN.R-project.org/package=kstIO},
+}
+
+@Manual{hockemeyer:kstmatrix,
+	title = {kst{M}atrix: Basic Functions in Knowledge Space Theory
+	         Using Matrix Representations},
+	author = {Cord Hockemeyer},
+	year = {2019},
+	note = {R package version 0.1-1},
+	url = {https://CRAN.R-project.org/package=kstMatrix},
 }
 
 
@@ -2748,15 +2856,6 @@ journal = {Journal of Universal Computer Science},
 volume = 9,
 year = {2003},
 pages = {1428--1436},
-}
-
-@manual{hockemeyer:tr96,
-author = {Cord Hockemeyer and Cornelia Elisabeth Dowling},
-title = {{K}{S}{T} Tools User Manual},
-institution = {Institut f{\"u}r Psychologie, Technische
-Universit{\"a}t Braunschweig, Germany},
-year = 1996,
-type = {Unpublished Technical Report},
 }
 
 @inproceedings{hockemeyer:calisce98,
@@ -2947,6 +3046,16 @@ address = {New York, Heidelberg},
 year = {2007},
 }
 
+@article{kickmeier:10,
+	author = {Kickmeier-Rust, Michael D. and Albert, Dietrich},
+	year = 2010, 
+	title = {Micro-adaptivity: Protecting immersion in didactically adaptive digital educational games},
+	journal = {Journal of Computer Assisted Learning},
+	volume = 26,
+	number = 2,
+	pages = {95-105},
+	doi = {10.1111/j.1365-2729.2009.00332.x},
+}
 
 @article{kickmeier:12,
 author = {Michael D. Kickmeier-Rust and Dietrich Albert},
@@ -2958,45 +3067,87 @@ number = {Edition 1 (Special Edition)]},
 pages = {15--28},
 }
 
+@book{kickmeier:b12,
+	editor = {Michael D. Kickmeier and Dietrich Albert},
+	title = {An Alien’s guide to multi-adaptive educational computer games},
+	year = 2012,
+	address = {Santa Rosa, CA},
+	publisher = {Informing Science Press},
+}
 
 @inproceedings{kickmeier:icalt12,
-author = {Michael D. Kickmeier-Rust and Dietrich Albert},
-title = {A Domain Model for Smart 21st Century Skills Training in Game-Based Virtual Worlds},
-booktitle = {12th IEEE International Conference on Advanced Learning Technologies},
-editor = {Ignacio Aedo and Rosa Maria Bottinoa and Nian-Shing Chen and Carlo Giovannella
-and Kinshuk and Demetrios G. Sampson},
-year = 2012,
-pages = {680--681},
-publisher = {IEEE Press},
-address = {Los Alamitos, CA},
+	author = {Michael D. Kickmeier-Rust and Dietrich Albert},
+	title = {A Domain Model for Smart 21st Century Skills Training in Game-Based Virtual Worlds},
+	booktitle = {12th IEEE International Conference on Advanced Learning Technologies},
+	editor = {Ignacio Aedo and Rosa Maria Bottinoa and Nian-Shing Chen and Carlo Giovannella
+	and Kinshuk and Demetrios G. Sampson},
+	year = 2012,
+	pages = {680--681},
+	publisher = {IEEE Press},
+	address = {Los Alamitos, CA},
 }
 
 @inproceedings{kickmeier:hci-kdd13a,
-author = {Michael D. Kickmeier-Rust and Dietrich Albert},
-title = {Learning Analytics to Support the Use of Virtual Worlds in the Classroom},
-pages = {358--365},
-booktitle = {Human-Computer Interaction and Knowledge Discovery in Complex, 
-Unstructured, Big Data: Third International Workshop, HCI-KDD 2013},
-editor = {Andreas Holzinger and Gabriella Pasi},
-year = 2013,
-publisher = {Springer},
-series = {Lecture Notes in Computer Science},
-volume = 7947,
-address = {Berlin, Heidelberg},
+	author = {Michael D. Kickmeier-Rust and Dietrich Albert},
+	title = {Learning Analytics to Support the Use of Virtual Worlds in the Classroom},
+	pages = {358--365},
+	booktitle = {Human-Computer Interaction and Knowledge Discovery in Complex, 
+	Unstructured, Big Data: Third International Workshop, HCI-KDD 2013},
+	editor = {Andreas Holzinger and Gabriella Pasi},
+	year = 2013,
+	publisher = {Springer},
+	series = {Lecture Notes in Computer Science},
+	volume = 7947,
+	address = {Berlin, Heidelberg},
 }
 
 @inproceedings{kickmeier:hci-kdd13b,
-author = {Michael D. Kickmeier-Rust and Dietrich Albert},
-title = {Using Hasse Diagrams for Competence-Oriented Learning Analytics},
-pages = {59--64},
-booktitle = {Human-Computer Interaction and Knowledge Discovery in Complex, 
-Unstructured, Big Data: Third International Workshop, HCI-KDD 2013},
-editor = {Andreas Holzinger and Gabriella Pasi},
-year = 2013,
-publisher = {Springer},
-series = {Lecture Notes in Computer Science},
-volume = 7947,
-address = {Berlin, Heidelberg},
+	author = {Michael D. Kickmeier-Rust and Dietrich Albert},
+	title = {Using Hasse Diagrams for Competence-Oriented Learning Analytics},
+	pages = {59--64},
+	booktitle = {Human-Computer Interaction and Knowledge Discovery in Complex, 
+	Unstructured, Big Data: Third International Workshop, HCI-KDD 2013},
+	editor = {Andreas Holzinger and Gabriella Pasi},
+	year = 2013,
+	publisher = {Springer},
+	series = {Lecture Notes in Computer Science},
+	volume = 7947,
+	address = {Berlin, Heidelberg},
+}
+
+@inproceedings{kickmeier:foe13,
+	author = {Kickmeier-Rust, Michael D. and Albert, Dietrich},
+	year = 2013,
+	title = {Supporting formative assessment and appraisal by smart, competence-based, probabilistic systems},
+	booktitle = {Proceedings of the 3rd Conference on the Future of Education (FoE) 2013},
+	pages = {253-257},
+}
+
+@incollection{kickmeier:reimann,
+	author = {Michael D. Kickmeier and Dietrich Albert},
+	title = {Competence-based knowledge space theory: Options for the 21st century classroom},
+	editor = {P. Reimann and S. Bull and M.D. Kickmeier-Rust and R. Vatrapu and B. Wasson},
+	booktitle = {Measuring and visualizing learning in the information-rich classroom},
+	year = 2016,
+	pages = {109--120},
+	address = {New York},
+	publisher = {Routledge},
+}
+
+@incollection{kickmeier:iwta16,
+	author = {Michael D. Kickmeier and Dietrich Albert},
+	title = {Support teachers' predictions of learning success by structural competence modelling},
+	year = 2016,
+	booktitle = {Proceedings of the Fourth International Workshop on Teaching Analytics},
+	pages = {35--39},
+}
+
+@inproceedings{kickmeier:msv16,
+	author = {Michael D. Kickmeier and Dietrich Albert},
+	title = {Visualizing competence models and individual learning paths},
+	booktitle = {Proceedings of the 2016 International Conference on Modelling, Simulation, and Visualization (MSV 2016)},
+	year = 2016,
+	pages = {180--184},
 }
 
 @inproceedings{kickmeier:ecgbl07,
@@ -3067,6 +3218,15 @@ address = {Heidelberg},
 series = {Studies in Computational Intelligence},
 volume = 350,
 pages = {221--238},
+}
+
+@inproceedings{kickmeier:visla15,
+	author = {Michael D. Kickmeier-Rust and Christina M. Steiner and Dietrich Albert},
+	title = {Uncovering learning processes using competence-based knowledge structuring and hasse diagrams},
+	booktitle = {Proceedings of the First International Workshop on Visual Aspects of Learning Analytics 
+	             Co-Located with 5th International Learning Analytics and Knowledge Conference (LAK 2015)},
+	year = 2015,
+	pages = {36--40},
 }
 
 @mastersthesis{koch:diplom,
@@ -3418,6 +3578,21 @@ address = {Heidelberg},
 publisher = {Springer Verlag},
 }
 
+@article{ley:08,
+	author={Tobias Ley and Armin Ulbrich and Peter Scheir and Stefanie N. Lindstaedt and Barbara Kump and Dietrich Albert},
+	year={2008},
+	title={Modeling competencies for supporting work-integrated learning in knowledge work},
+	journal={Journal of Knowledge Management},
+	volume={12},
+	number={6},
+	pages={31-47},
+	note={doi: 10.1108/13673270810913603; 15},
+	isbn={1367-3270},
+	url={http://dx.doi.org/10.1108/13673270810913603},
+	doi={10.1108/13673270810913603}
+}
+
+
 @inproceedings{lovquist:cate08,
 author = {Erik L{\"o}vquist and Annette Aboulafia and Dorothy Breen and George Shorten and Dajie Zhang and Dietrich Albert},
 title = {Designing a simulation supported assessment system architecture for spinal anesthesia},
@@ -3545,6 +3720,16 @@ year = {2008},
 volume = 4,
 }
 
+@article{matayoshi:17,
+	author = {Jeffrey Matayoshi},
+	title = {On the properties of well-graded partially union-closed families},
+	journal = {Jornal of Mathematical Psychology},
+	volume = 80,
+	year = 2017,
+	pages = {15--21},
+	month = {October},
+}
+
 @article{math:11,
 	author = {J{\'a}nos M{\'a}th and K{\'a}lm{\'a}n Abari},
 	title = {Knowledge Spaces and Historical Knowledge in Practice},
@@ -3588,6 +3773,21 @@ Luxembourg},
 note = {Copies available from Michel Regenwetter},
 }
 
+@incollection{nakamura:kes11,
+	author={Yu Nakamura and Hiroshi Tsuji and Kazuhisa Seta and Kiyota Hashimoto and Dietrich Albert},
+	editor={K\"onig, Andreas and Dengel, Andreas and Hinkelmann, Knut and Kise, Koichi and Howlett, Robert J. and Jain, Lakhmi C.},
+	year={2011},
+	title={Visualization of Learner's State and Learning Paths with Knowledge Structures},
+	booktitle={Knowledge-Based and Intelligent Information and Engineering Systems: 15th International Conference, KES 2011, Kaiserslautern, Germany, September 12-14, 2011, Proceedings, Part IV},
+	publisher={Springer Berlin Heidelberg},
+	address={Berlin, Heidelberg, Germany},
+	pages={261-270},
+	isbn={978-3-642-23866-6},
+	url={http://dx.doi.org/10.1007/978-3-642-23866-6_28},
+	doi={10.1007/978-3-642-23866-6_28}
+}
+
+
 @phdthesis{narciss:diss,
 author	={Narciss, S.},
 year	=1994,
@@ -3620,6 +3820,19 @@ title	={Experimentelle {\"{U}}berpr{\"u}fung von {S}trukturen zur
 type	={{Diplomarbeit}},
 school	={{Technische Universit{\"a}t Carolo-Wilhelmina}},
 address	={Braunschweig, Germany}
+}
+
+@Article{noventa:18,
+	author="Noventa, Stefano and Spoto, Andrea and Heller, J{\"u}rgen and Kelava, Augustin",
+	title="On a Generalization of Local Independence in Item Response Theory Based on Knowledge Space Theory",
+	journal="Psychometrika",
+	year="2018",
+	month="Nov",
+	day="12",
+	abstract="Knowledge space theory (KST) structures are introduced within item response theory (IRT) as a possible way to model local dependence between items. The aim of this paper is threefold: firstly, to generalize the usual characterization of local independence without introducing new parameters; secondly, to merge the information provided by the IRT and KST perspectives; and thirdly, to contribute to the literature that bridges continuous and discrete theories of assessment. In detail, connections are established between the KST simple learning model (SLM) and the IRT General Graded Response Model, and between the KST Basic Local Independence Model and IRT models in general. As a consequence, local independence is generalized to account for the existence of prerequisite relations between the items, IRT models become a subset of KST models, IRT likelihood functions can be generalized to broader families, and the issues of local dependence and dimensionality are partially disentangled. Models are discussed for both dichotomous and polytomous items and conclusions are drawn on their interpretation. Considerations on possible consequences in terms of model identifiability and estimation procedures are also provided.",
+	issn="1860-0980",
+	doi="10.1007/s11336-018-9645-6",
+	url="https://doi.org/10.1007/s11336-018-9645-6"
 }
 
 @incollection{nussbaumer:role,
@@ -3672,7 +3885,7 @@ address = {Amman, Jordan},
 
 @article{nussbaumer:15,
 author = {Alexander Nussbaumer and Eva-Catherine Hillemann and Christian G{\"u}tl and Dietrich Albert},
-title = {A Competence?based Service for Supporting Self?Regulated Learning in Virtual Environments},
+title = {A Competence--based Service for Supporting Self--Regulated Learning in Virtual Environments},
 journal = {Journal of Learning Analytics},
 volume = 2,
 issue = 1,
@@ -3726,7 +3939,7 @@ institution = {Institut f{\"u}r Psychologie,
 Karl--Franzens--Universit{\"a}t Graz, Austria},
 year = 2001,
 type = {Unpublished Technical Report},
-url = {https://kst.hockemeyer.at/techreports/libsrbt_TechRep_FWF01.pdf},
+note = {\url{https://kst.hockemeyer.at/techreports/libsrbt_TechRep_FWF01.pdf}},
 }
 
 @manual{poetzi:tr01b,
@@ -3736,7 +3949,7 @@ institution = {Institut f{\"u}r Psychologie,
 Karl--Franzens--Universit{\"a}t Graz, Austria},
 year = 2001,
 type = {Unpublished Technical Report},
-url = {https://kst.hockemeyer.at/techreports/SRBT-Tools_TechRep_FWF01.pdf},
+note = {\url{https://kst.hockemeyer.at/techreports/SRBT-Tools_TechRep_FWF01.pdf}},
 }
 
 @article{prediger:99,
@@ -3811,6 +4024,14 @@ booktitle = {Knowledge Spaces: Applications in Education},
 year = 2013,
 publisher = {Springer},
 address = {Heidelberg},
+}
+
+@phdthesis{reed:diss,
+	author = {Ann E. Reed},
+	title = {The influence of adaptive instructional technology on student achievement in reading},
+	year = 2017,
+	school = {Capella University, Harold Abel School of Social and Behavioral Sciences, US},
+	url = {https://search.proquest.com/docview/1855157140},
 }
 
 @article{reimann:13,
@@ -3957,7 +4178,20 @@ year = 2009,
 pages = {376--392},
 }
 
-@manual{sargin:tr16,
+@InProceedings{sargin:locarek,
+	author="Sargin, Anatol and {\"U}nl{\"u}, Ali",
+	editor="Locarek-Junge, Hermann and Weihs, Claus",
+	title="The R Package DAKS: Basic Functions and Complex Algorithms in Knowledge Space Theory",
+	booktitle="Classification as a Tool for Research",
+	year="2010",
+	publisher="Springer Berlin Heidelberg",
+	address="Berlin, Heidelberg",
+	pages="263--270",
+	abstract="R is a language and environment for statistical computing and graphics. It is available as free software and can easily be extended by user contributed packages. This paper introduces the R package DAKS (version 1.0-0) developed by the authors for the theory of knowledge spaces in psychometrics. Knowledge space theory provides a theoretical framework for the modeling, assessment, and training of knowledge. It utilizes the idea that some pieces of knowledge may imply others, and is based on order and set theory. The package DAKS contains general functions, for instance, for switching between different formulations in knowledge space theory, a simulation tool, a graph drawing device for Hasse diagrams, and several data analysis methods for detecting implications between test items.",
+	isbn="978-3-642-10745-0"
+}
+
+@manual{sargin:daks,
 author = {Anatol Sargin and Ali {\"U}nl{\"u}},
 title = {{DAKS}: Data Analysis and Knowledge Spaces},
 year = 2016,
@@ -3965,18 +4199,6 @@ note = {R package version 2.1-3},
 url = {https://cran.r-project.org/package=DAKS},
 }
 
-
-@incollection{sargin:tr10,
-author = {Anatol Sargin and Ali {\"U}nl{\"u}},
-title = {The {R} package {DAKS}: Basic functions and complex algorithms in knowledge space theory},
-year = 2010,
-editor = {H. Locarek-Junge and C. Weihs},
-booktitle = {Studies in Classification, Data Analysis, and
-Knowledge Organisation},
-pages = {263--270},
-publisher = {Springer},
-address = {Berlin},
-}
 
 @book{schoonenboom:b07,
 year = 2007,
@@ -4236,7 +4458,7 @@ publisher = {IEEE},
 
 @inproceedings{sitthisak:icaai13,
 author = {Onjira Sitthisak and Lester Gilbert and Dietrich Albert},
-title = {Adaptice Learning Using an integration of competence model with Knowledge Space Theory},
+title = {Adaptive Learning Using an integration of competence model with Knowledge Space Theory},
 booktitle = {Proceedings of the International  Conference on Advanced Applied Informatics (ICAAI 2013)},
 year = 2013,
 pages = {199--202},
@@ -4329,8 +4551,8 @@ pages = {249-254},
 @Manual{stahl:kst,
     title = {kst: Knowledge Space Theory},
     author = {Christina Stahl and David Meyer and Cord Hockemeyer},
-    year = {2017},
-    note = {R package version 0.2-2},
+    year = {2019},
+    note = {R package version 0.5-2},
     url = {https://CRAN.R-project.org/package=kst},
 }
 
@@ -4384,6 +4606,14 @@ volume = 56,
 number = 5,
 year = 2012,
 pages = {392--394},
+}
+
+@article{stefanutti:18a,
+	author = {Luca Stefanutti},
+	title = {On the assessment of procedural knowledge: From problem spaces to knowledge spaces},
+	journal = {British Journal of Mathematical and Statistical Psychology},
+	year = 2018,
+	howpublished = {in press},
 }
 
 @inproceedings{stefanutti:iknow02,
@@ -4460,6 +4690,15 @@ series = {Frontiers in Artificial Intelligence and Applications},
 volume = 127,
 }
 
+@article{stefanutti:11,
+	author = {Luca Stefanutti and Pasquale Anselmi and Egidio Robusto},
+	title = {Assessing Learning Processes with the Gain--Loss Model},
+	journal = {Behavior Research Methods},
+	year = 2011,
+	volume = 43,
+	pages = {66--76},
+}
+
 @article{stefanutti:17,
 author = {Luca Stefanutti and Debora de Chiusole},
 title = {On the Assessment of Learning in Competence based Knowledge Space Theory},
@@ -4531,13 +4770,13 @@ volume = 72,
 pages = {83--96},
 }
 
-@article{stefanutti:11,
-author = {Luca Stefanutti and Pasquale Anselmi and Egidio Robusto},
-title = {Assessing Learning Processes with the Gain--Loss Model},
-journal = {Behavior Research Methods},
-year = 2011,
-volume = 43,
-pages = {66--76},
+@article{stefanutti:18b,
+author = {Luca Stefanutti and Andrea Spoto and Giulio Vidotto},
+title = {Detecting and explaining BLIM’s unidentifiability: Forward and backward parameter transformation groups},
+journal = {Journal of Mathematical Psychology},
+volume = 82,
+year =  2018,
+pages = {38--51},
 }
 
 @inproceedings{steiner:icwl07,
@@ -4594,6 +4833,21 @@ year = {2012},
 publisher = {Springer},
 address = {Berlin},
 }
+
+@article{steiner:09,
+	author={Christina M. Steiner and Alexander Nussbaumer and Dietrich Albert},
+	year={2009},
+	month={December 01},
+	title={Supporting Self-Regulated Personalised Learning through Competence-Based Knowledge Space Theory},
+	journal={Policy Futures in Education},
+	volume={7},
+	number={6},
+	pages={645-661},
+	abstract={This article presents two current research trends in e-learning that at first sight appear to compete. Competence-Based Knowledge Space Theory (CBKST) provides a knowledge representation framework which, since its invention by Doignon & Falmagne, has been successfully applied in various e-learning systems (for example, Adaptive Learning with Knowledge Spaces [ALEKS] and Enhanced Learning Experience and Knowledge Transfer [ELEKTRA]), providing automated personalisation to learners' current knowledge and competence levels. Principles of self-regulated learning (SRL), pioneered by, for example, Zimmerman, however, argue for increased learner control, thus resulting in giving learners greater responsibility over their e-learning. The research presented in this article shows that skill-based visualisations in the tradition of CBKST and SRL-based autonomy are in no way conflicting but rather complement each other towards an integrated approach of self-regulated personalised learning. The research has been carried out and technologically translated into a set of visual tools for supporting the whole learning cycle within the scope of the iClass project.},
+	url={http://dx.doi.org/10.2304/pfie.2009.7.6.645},
+	doi={10.2304/pfie.2009.7.6.645}
+}
+
 
 @mastersthesis{stockinger:diplom,
 author = {Dietmar Stockinger},
@@ -4899,8 +5153,8 @@ pages = {281--314},
 
 @article{uenlue:07b,
 author = {Ali {\"U}nl{\"u} and Silke Brandt and Dietrich Albert},
-title = {Corrigendum to ``Surmise Relations between Tests ---
-Mathematical Considerations´´},
+title = {Corrigendum to "Surmise Relations between Tests ---
+Mathematical Considerations": [{D}iscrete {A}pplied {M}athematics 127 (2003) 221--239]},
 journal = {Discrete Applied Mathematics},
 volume = {155},
 pages = {2401--2402},
@@ -4909,13 +5163,13 @@ year = 2007,
 
 @techreport{uenlue:tr07,
 author = {Ali {\"U}nl{\"u} and Silke Brandt and Dietrich Albert},
-title = {Test surmise relations, test knowledge structures, and
-their characterizations},
+title = {Test Surmise Relations, Test Knowledge Structures, and
+their Characterizations},
 institution = {Institute of Mathematics, University of Augsburg},
 address = {Augsburg, Germany},
 number = {035/2007},
 year = 2007,
-url = {http://opus.bibliothek.uni-augsburg.de/opus4/frontdoor/index/index/docId/576},
+url = {https://opus.bibliothek.uni-augsburg.de/opus4/576},
 }
 
 @inproceedings{uenlue:compstat06,
@@ -4938,6 +5192,16 @@ journal = {Journal of Data Science},
 volume = 6,
 year = 2008,
 pages = {491--514},
+}
+
+@techreport{uenlue:tr08,
+author = {Ali {\"U}nl{\"u} and Anatol Sargin},
+title = {Maximum likelihood methodology for diff fit measures for quasi orders},
+institution = {Institute of Mathematics, University of Augsburg},
+address = {Augsburg, Germany},
+number = {030/2008},
+year = 2008,
+url = {https://opus.bibliothek.uni-augsburg.de/opus4/1195},
 }
 
 @article{uenlue:09,
@@ -5146,11 +5410,11 @@ type = {{Diplomarbeit}},
 school = {Universit{\"a}t Regensburg, Germany},
 }
 
-@manual{wickelmaier:tr16,
-author = {Florian Wickelmaier and J{\"u}rgen Heller and Pasquale Anselmi},
+@manual{wickelmaier:pks,
+author = {Florian Wickelmaier and J{\"u}rgen Heller},
 title = {pks: Probabilistic Knowledge Structures},
 year = 2016,
-note = {R package version 0.2-1},
+note = {R package version 0.4-0},
 url = {https://cran.r-project.org/package=pks},
 }
 
