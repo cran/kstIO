@@ -1,5 +1,4 @@
 ### R code from vignette source 'kstIO.Rnw'
-### Encoding: UTF-8
 
 ###################################################
 ### code chunk number 1: kstIO.Rnw:59-64
@@ -52,7 +51,7 @@ read_surmiserelation("DF7.rel")
 
 
 ###################################################
-### code chunk number 5: kstIO.Rnw:256-257
+### code chunk number 5: kstIO.Rnw:263-264
 ###################################################
 setwd(wd)
 

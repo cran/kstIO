@@ -1,5 +1,5 @@
 \encoding{UTF-8}
-\name{write_space}
+\name{write_kspace}
 \alias{write_kspace}
 \title{Write a knowledge space file}
 
@@ -18,7 +18,7 @@
     of \code{kspace} class.}
   \item{filename}{A character string specifying the name of the base file.}
 
-  \item{format}{Specification of the files format. Can be "SRBT" (default), "KST", or
+  \item{format}{Specification of the files format. Can be "SRBT" (default), "KST", "CSV", or
     "matrix".
   }
 }
@@ -33,7 +33,7 @@
   Hockemeyer, C. (2001). \emph{KST Tools User Manual} (2nd ed.). 
   \url{https://kst.hockemeyer.at/techreports/KST-Tools_TechRep_FWF01.pdf}.
 
-  Poetzi, S. \& Wesiak, G. (2001). \emph{SRbT Tools User Manual.}
+  Poetzi, S. & Wesiak, G. (2001). \emph{SRbT Tools User Manual.}
   \url{https://kst.hockemeyer.at/techreports/SRBT-Tools_TechRep_FWF01.pdf}
 }
 
@@ -46,11 +46,14 @@
 \examples{
 # Obtain data to write from the 'pks' package
 library(kst)
+d <- getwd()
+setwd(tempdir())
 data(DoignonFalmagne7)
 ksp <- kspace(kstructure(as.pattern(DoignonFalmagne7$K, as.set=TRUE)))
 # Write space to file
 write_kspace(ksp, "DF7.spc") # Write in (default) SRBT format
 write_kspace(DoignonFalmagne7$K, "DF7.spc", "KST") # Write the matrix directly in (old) KST format
+setwd(d)
 }
 
 \keyword{file}

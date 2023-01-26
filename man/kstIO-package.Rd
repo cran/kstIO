@@ -36,7 +36,7 @@
     matrix format by two preceding header lines containing the number of 
     items and the number of states/response patterns, respectively.
   }
-  \subsection{SRBT Tools Format}{This format (Poetzi \& Wesiak, 2001) extends 
+  \subsection{SRBT Tools Format}{This format (Poetzi & Wesiak, 2001) extends 
     the KST tools format by yet another preceding header line with format and 
     content metadata. This new header line has the format
     \preformatted{#SRBT v2.0 <struct> ASCII <comment>}
@@ -59,24 +59,43 @@
     information \code{"ASCII"} is missing because these files are always
     in ASCII format.
   }
-  \subsection{Base Files}{Base files are available only in KST and 
-    SRBT tools format. Their matrix part differs from the other files 
+  \subsection{CSV Format}{
+    CSV (comma separated values) is a standard file format for data tables. Within a row, 
+    the different columns are separated by commas. Please note that in some European 
+    countries and for some programs, rows are instead separated by semicolon, and the comma
+    replaces the decimal point.
+    
+    CSV files written/read by \code{kstIO} functions start with a head row containing
+    the item IDs. The subsequent rows build the matrix as described n the previous
+    format descriptions.
+  }
+}
+\section{Special File/Data Types}{
+  \subsection{Base Files}{Base files are not available  in KST tools format. 
+  
+    Their matrix part differs from the other files 
     in that it contains "0", "1", and "2". A "1" means that the state
     is minimal for the item and a "2" means that it is not (but contains 
     the item). A "0" stands (as always) for the state not containing 
     the item.
   }
-  \subsection{Surmise Relation Files}{Surmise relation files are available 
-	  only in matrix and SRBT tools format as they were never used
-	  in KST tools format.
+  \subsection{Surmise Relation Files}{Surmise relation files are not
+    available  in KST Tools format, either.
 
-	  Please note that their matrices are somewhat transposed in
+	  Their matrices are somewhat transposed in
 	  comparison to all the other formats. Row i and column j is
 	  equal to "1" if knowing i can be surmised from knowing j, and 
 	  equal to "0" otherwise. Thus, column j describes the minimal
 	  state for item j.
   }
-  \subsection{Example}{\preformatted{#SRBT v2.0 structure ASCII
+  \subsection{Surmise Function Files}{
+    Surmise function files are available only in CSV format. 
+    
+    The matrix is here preceded by a row which denotes the item for 
+    which the respective state is a clause.
+  }
+}
+\section{Example}{\preformatted{#SRBT v2.0 structure ASCII
 3
 5
 # Some comment or item information
@@ -84,7 +103,7 @@
 100
 110
 101
-111}}
+111}
 }
 
 

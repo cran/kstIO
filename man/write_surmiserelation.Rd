@@ -18,7 +18,7 @@
     of \code{relation} class.}
   \item{filename}{A character string specifying the name of the base file.}
 
-  \item{format}{Specification of the files format. Can be "SRBT" (default) or
+  \item{format}{Specification of the files format. Can be "SRBT" (default), "CSV", or
     "matrix".
   }
 }
@@ -33,7 +33,7 @@
   Hockemeyer, C. (2001). \emph{KST Tools User Manual} (2nd ed.). 
   \url{https://kst.hockemeyer.at/techreports/KST-Tools_TechRep_FWF01.pdf}.
 
-  Poetzi, S. \& Wesiak, G. (2001). \emph{SRbT Tools User Manual.}
+  Poetzi, S. & Wesiak, G. (2001). \emph{SRbT Tools User Manual.}
   \url{https://kst.hockemeyer.at/techreports/SRBT-Tools_TechRep_FWF01.pdf}
 }
 
@@ -45,11 +45,14 @@
 # Obtain data to write from the 'pks' package
 library(kst)
 library(pks)
+d <- getwd()
+setwd(tempdir())
 data(DoignonFalmagne7)
 r <- as.relation(kspace(kstructure(as.pattern(DoignonFalmagne7$K, as.set=TRUE))))
 # Write surmise relation to file
 write_surmiserelation(r, "DF7.bas") # Write in (default) SRBT format
 write_surmiserelation(r, "DF7.bas", "matrix") # matrix format
+setwd(d)
 }
 
 \keyword{file}

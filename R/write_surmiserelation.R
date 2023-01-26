@@ -26,9 +26,12 @@ write_surmiserelation <- function (x, filename, format="SRBT") {
     }
   }
 
-  rownames(mat) <- NULL
-  colnames(mat) <- NULL
+  # rownames(mat) <- NULL
+  # colnames(mat) <- NULL
 
+  if (format == "CSV") {
+    write.csv(mat, filename, row.names = FALSE)
+  } else {
   con <- file(filename)
   if (is.null(con))
     stop(sprintf("Unable to open file %s.", dQuote(filename)))
@@ -49,4 +52,5 @@ write_surmiserelation <- function (x, filename, format="SRBT") {
   write.matrix(mat, sep="", file=con)
 
   close(con)
+  }
 }

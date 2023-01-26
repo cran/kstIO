@@ -18,8 +18,8 @@
     of \code{kbase} class.}
   \item{filename}{A character string specifying the name of the base file.}
 
-  \item{format}{Specification of the files format. Can be "SRBT" (default), "KST", or
-    "matrix".
+  \item{format}{Specification of the files format. Can be "SRBT" (default), "KST", 
+    "CSV", or "matrix".
   }
 }
 
@@ -33,7 +33,7 @@
   Hockemeyer, C. (2001). \emph{KST Tools User Manual} (2nd ed.). 
   \url{https://kst.hockemeyer.at/techreports/KST-Tools_TechRep_FWF01.pdf}.
 
-  Poetzi, S. \& Wesiak, G. (2001). \emph{SRbT Tools User Manual.}
+  Poetzi, S. & Wesiak, G. (2001). \emph{SRbT Tools User Manual.}
   \url{https://kst.hockemeyer.at/techreports/SRBT-Tools_TechRep_FWF01.pdf}
 }
 
@@ -46,11 +46,14 @@
 \examples{
 # Obtain data to write from the 'pks' package
 library(kst)
+d <- getwd()
+setwd(tempdir())
 data(DoignonFalmagne7)
 b <- kbase(kspace(kstructure(as.pattern(DoignonFalmagne7$K, as.set=TRUE))))
 # Write base to file
 write_kbase(b, "DF7.bas") # Write in (default) SRBT format
 write_kbase(b, "DF7.bas", "KST") # (Old) KST format
+setwd(d)
 }
 
 \keyword{file}

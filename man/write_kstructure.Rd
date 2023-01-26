@@ -18,7 +18,7 @@
     of \code{kstructure} class.}
   \item{filename}{A character string specifying the name of the base file.}
 
-  \item{format}{Specification of the files format. Can be "SRBT" (default), "KST", or
+  \item{format}{Specification of the files format. Can be "SRBT" (default), "KST", "CSV", or
     "matrix".
   }
 }
@@ -33,7 +33,7 @@
   Hockemeyer, C. (2001). \emph{KST Tools User Manual} (2nd ed.). 
   \url{https://kst.hockemeyer.at/techreports/KST-Tools_TechRep_FWF01.pdf}.
 
-  Poetzi, S. \& Wesiak, G. (2001). \emph{SRbT Tools User Manual.}
+  Poetzi, S. & Wesiak, G. (2001). \emph{SRbT Tools User Manual.}
   \url{https://kst.hockemeyer.at/techreports/SRBT-Tools_TechRep_FWF01.pdf}
 }
 
@@ -46,12 +46,15 @@
 \examples{
 # Obtain data to write from the 'pks' package
 library(kst)
+d <- getwd()
+setwd(tempdir())
 data(DoignonFalmagne7)
 kst <- kstructure(as.pattern(DoignonFalmagne7$K, as.set=TRUE))
 # Write structure to file
 write_kstructure(kst, "DF7.struct") # Write in (default) SRBT format
 # Write the matrix directly in (old) KST format
 write_kstructure(DoignonFalmagne7$K, "DF7.struct", "KST") 
+setwd(d)
 }
 
 \keyword{file}

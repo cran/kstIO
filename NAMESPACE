@@ -1,3 +1,4 @@
+importFrom("utils", "read.csv", "write.csv")
 importFrom("pks", "as.pattern", "as.binmat")
 importFrom("MASS", "write.matrix")
 importFrom("stringr", "str_length", "str_locate")
@@ -10,11 +11,13 @@ export("read_kbase",
        "read_kfamset",
        "read_kspace",
        "read_kstructure",
+       "read_surmisefunction",
        "read_surmiserelation",
        "write_kbase",
        "write_kdata",
        "write_kspace",
        "write_kstructure",
+       "write_surmisefunction",
        "write_surmiserelation"
 )
 

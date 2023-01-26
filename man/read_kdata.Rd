@@ -17,7 +17,7 @@
   \item{filename}{A character string specifying the name of the data file.}
 
   \item{format}{Specification of the files format. Can be "SRBT", "KST",
-    "matrix", or "auto" (default).}
+    "matrix", "CSV", or "auto" (default).}
   \item{as.letters}{logical, should the elements of the sets be letters
                     or numbers?}
 }
@@ -40,7 +40,7 @@
   Hockemeyer, C. (2001). \emph{KST Tools User Manual} (2nd ed.). 
   \url{https://kst.hockemeyer.at/techreports/KST-Tools_TechRep_FWF01.pdf}.
 
-  Poetzi, S. \& Wesiak, G. (2001). SRbT Tools User Manual.
+  Poetzi, S. & Wesiak, G. (2001). SRbT Tools User Manual.
   \url{https://kst.hockemeyer.at/techreports/SRBT-Tools_TechRep_FWF01.pdf}
 }
 
@@ -56,12 +56,15 @@
 
 \examples{
 # Produce a data file
+d <- getwd()
+setwd(tempdir())
 data(DoignonFalmagne7)
-d <- as.binmat(DoignonFalmagne7$N.R)
-write_kdata(d, "DF7.dat", "matrix") # matrix format (without any headers)
+df <- as.binmat(DoignonFalmagne7$N.R)
+write_kdata(df, "DF7.dat", "matrix") # matrix format (without any headers)
 # Read file
 read_kdata("DF7.dat") # Automatic format detection (default)
 read_kdata("DF7.dat", "matrix") # Explicit ormat specification
+setwd(d)
 }
 
 \keyword{file}

@@ -113,11 +113,14 @@ different file formats have evolved.
       \item structure
       \item relation
     \end{itemize}
-  
+  \subsection{CSV Format}
+    In CSV format, there is a separating comma between the columns. The
+    matrix is preceded by a head line containing the item IDs.
+    
+\section{Specific File Types}  
   \subsection{Base Files}
     For base files, some special rules apply. They are available only
-    in KST and 
-    SRBT tools format. Their matrix part differs from the other files 
+    in KST, SRBT tools, and CSV format. Their matrix part differs from the other files 
     in that it contains "0", "1", and "2". A "1" means that the state
     is minimal for the item and a "2" means that it is not (but contains 
     the item). A "0" stands (as always) for the state not containing 
@@ -127,13 +130,17 @@ different file formats have evolved.
     missing because \code{kbase} files are always in ASCII format.
 
     \textbf{Note:} While the respective functions in \pkg{kst} and 
-    \pkg{kstIO} use the term \emph{base} in their names, the \verb|sstruct>|
+    \pkg{kstIO} use the term \emph{base} in their names, the \verb|struct>|
     term in the SRBT header line is \emph{basis}.
+    
+  \subsection{Surmise Function Files}
+    In surmise unction files, the matrix is preceded by an additional column
+    containing the ID of the item for which the respective matrix row is a clause.
   
   \subsection{(Surmise) Relation Files}
     Also for relation files, some special rules apply. As relation file
     formats were never defined in KST tools format, these files are
-    available in SRBT tools and matrix format only. Like for \code{base} files,
+    available in SRBT tools, matrix, and CSV format only. Like for \code{base} files,
     the encoding information \code{"ASCII"} is missing because \code{relation}
     files are always in ASCII format.
 

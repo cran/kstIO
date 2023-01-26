@@ -17,7 +17,7 @@
   \item{x}{The data to be written, as a binary matrix.}
   \item{filename}{A character string specifying the name of the data file.}
 
-  \item{format}{Specification of the files format. Can be "SRBT" (default), "KST", or
+  \item{format}{Specification of the files format. Can be "SRBT" (default), "KST", "CSV", or
     "matrix".
   }
 }
@@ -32,7 +32,7 @@
   Hockemeyer, C. (2001). \emph{KST Tools User Manual} (2nd ed.). 
   \url{https://kst.hockemeyer.at/techreports/KST-Tools_TechRep_FWF01.pdf}.
 
-  Poetzi, S. \& Wesiak, G. (2001). \emph{SRbT Tools User Manual.}
+  Poetzi, S. & Wesiak, G. (2001). \emph{SRbT Tools User Manual.}
   \url{https://kst.hockemeyer.at/techreports/SRBT-Tools_TechRep_FWF01.pdf}
 }
 
@@ -43,11 +43,14 @@
 
 \examples{
 # Obtain data to write from the 'pks' package
+d <- getwd()
+setwd(tempdir())
 data(DoignonFalmagne7)
-d <- as.binmat(DoignonFalmagne7$N.R)
+df <- as.binmat(DoignonFalmagne7$N.R)
 # Write data to file
-write_kdata(d, "DF7.dat") # Write in (default) SRBT format
+write_kdata(df, "DF7.dat") # Write in (default) SRBT format
 write_kdata(DoignonFalmagne7$K, "DF7.dat", "matrix") # matrix format (without any headers)
+setwd(d)
 }
 
 \keyword{file}

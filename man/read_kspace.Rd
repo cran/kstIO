@@ -18,7 +18,7 @@
   \item{filename}{A character string specifying the name of the space file.}
 
   \item{format}{Specification of the files format. Can be "SRBT", "KST",
-    "matrix", or "auto" (default).}
+    "matrix", "CSV", or "auto" (default).}
   \item{as.letters}{logical, should the elements of the sets be letters
                     or numbers?}
   \item{close}{logical, determines whether a closure under union is performed
@@ -48,7 +48,7 @@
   Hockemeyer, C. (2001). \emph{KST Tools User Manual} (2nd ed.). 
   \url{https://kst.hockemeyer.at/techreports/KST-Tools_TechRep_FWF01.pdf}.
 
-  Poetzi, S. \& Wesiak, G. (2001). SRbT Tools User Manual.
+  Poetzi, S. & Wesiak, G. (2001). SRbT Tools User Manual.
   \url{https://kst.hockemeyer.at/techreports/SRBT-Tools_TechRep_FWF01.pdf}
 }
 
@@ -66,12 +66,15 @@
 \examples{
 # Produce a space file
 library(kst)
+d <- getwd()
+setwd(tempdir())
 data(DoignonFalmagne7)
 ksp <- kspace(kstructure(as.pattern(DoignonFalmagne7$K, as.set=TRUE)))
 write_kspace(ksp, "DF7.spc") # Write in (default) SRBT format
 # Read file
 read_kspace("DF7.spc") # Automatic format detection (default)
 read_kspace("DF7.spc", "SRBT") # Explicit format specification
+setwd(d)
 }
 
 \keyword{file}
