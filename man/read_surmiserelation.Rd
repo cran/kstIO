@@ -45,10 +45,10 @@
 
 \references{
   Hockemeyer, C. (2001). \emph{KST Tools User Manual} (2nd ed.). 
-  \url{https://kst.hockemeyer.at/techreports/KST-Tools_TechRep_FWF01.pdf}.
+  \url{https://resources.cord-hockemeyer.info/techreports/KST-Tools_TechRep_FWF01.pdf}.
 
   Poetzi, S. & Wesiak, G. (2001). SRbT Tools User Manual.
-  \url{https://kst.hockemeyer.at/techreports/SRBT-Tools_TechRep_FWF01.pdf}
+  \url{https://resources.cord-hockemeyer.info/techreports/SRBT-Tools_TechRep_FWF01.pdf}
 }
 
 

@@ -49,6 +49,7 @@ write_surmiserelation <- function (x, filename, format="SRBT") {
                  dQuote("matrix")))
   }
 
+  colnames(mat) <- NULL
   write.matrix(mat, sep="", file=con)
 
   close(con)
