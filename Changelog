@@ -1,3 +1,6 @@
+2025-03-20: Version 0.4-2, Cord Hockemeyer <cord.hockemeyer@unni-graz.at>
+* Correcting further write functions w.r.t. matrix colnames
+
 2025-01-20: Version 0.4-1, Cord Hockemeyer <cord.hockemeyer@uni-graz.at>
 * Omitting colnames when writing surmise relation
 * Updating links to techreports in man files

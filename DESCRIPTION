@@ -1,6 +1,6 @@
 Package: kstIO
-Version: 0.4-1
-Date: 2025-01-20
+Version: 0.4-2
+Date: 2025-03-20
 Title: Knowledge Space Theory Input/Output
 Authors@R: c(person(given = "Cord", family = "Hockemeyer", 
                     role = c("aut", "cre"),
@@ -21,5 +21,5 @@ Maintainer: Cord Hockemeyer <cord.hockemeyer@uni-graz.at>
 NeedsCompilation: no
 Repository: CRAN
 Encoding: UTF-8
-Packaged: 2025-01-20 09:54:21 UTC; cord
-Date/Publication: 2025-01-20 11:20:09 UTC
+Packaged: 2025-04-04 05:25:18 UTC; cord
+Date/Publication: 2025-04-04 06:20:02 UTC

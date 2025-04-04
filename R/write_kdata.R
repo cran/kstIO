@@ -33,6 +33,7 @@ write_kdata <- function (x, filename, format="SRBT") {
       cat(sprintf("%d\n", size[1]), file=con)
     }
     
+    colnames(x) <- NULL
     write.matrix(x, sep="", file=con)
     
     close(con)

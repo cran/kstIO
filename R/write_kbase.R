@@ -78,6 +78,7 @@ write_kbase <- function (x, filename, format="SRBT") {
       ))
     }
     
+    colnames(mat) <- NULL
     write.matrix(mat, sep="", file=con)
     
     close(con)
